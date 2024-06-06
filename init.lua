@@ -292,7 +292,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Search Keymaps' })
       vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Search Files' })
       vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = 'Search Telescope' })
-      vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = 'Search current [W]ord' })
+      vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = 'Search current Word' })
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Search by Grep' })
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Search Diagnostics' })
       vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = 'Search Resume' })
