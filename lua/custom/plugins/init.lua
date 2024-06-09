@@ -4,4 +4,5 @@
 
 vim.keymap.set('n', '<leader>', ':Explore', { desc = 'Open Explore' })
 vim.keymap.set('n', 'J', '<Nop>', { desc = 'Disable J key' })
+
 return {}
