@@ -87,6 +87,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 --MrG Keymaps
 vim.keymap.set('n', 'J', '<Nop>', { desc = 'Disable J key' })
+vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'remap select all' })
 vim.api.nvim_set_keymap('n', 'J', '<Nop>', { noremap = true, silent = true })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
