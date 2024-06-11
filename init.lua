@@ -86,9 +86,9 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagn
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 --MrG Keymaps
-vim.keymap.set('n', 'J', '<Nop>', { desc = 'Disable J key' })
 vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'remap select all' })
-vim.api.nvim_set_keymap('n', 'J', '<Nop>', { noremap = true, silent = true })
+vim.keymap.set('n', 'J', '<Nop>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -559,7 +559,7 @@ require('lazy').setup({
     lazy = false,
     keys = {
       {
-        '<leader>f',
+        '<leader>fm',
         function()
           require('conform').format { async = true, lsp_fallback = true }
         end,
