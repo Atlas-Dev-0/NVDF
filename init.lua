@@ -90,6 +90,11 @@ vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'remap select all' })
 vim.keymap.set('n', 'J', '<Nop>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true })
 
+vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true })
+vim.api.nvim_set_keymap('v', 'd', '"_d', { noremap = true })
+vim.api.nvim_set_keymap('n', 'dd', '"_dd', { noremap = true })
+vim.api.nvim_set_keymap('n', 'D', '"_D', { noremap = true })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -430,7 +435,7 @@ require('lazy').setup({
 
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap.
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
+          map('<leader>dc', vim.lsp.buf.hover, 'Hover Documentation')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
