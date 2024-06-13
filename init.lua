@@ -88,6 +88,8 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 --MrG Keymaps
 vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'remap select all' })
 vim.keymap.set('n', 'J', '<Nop>', { noremap = true, silent = true })
+vim.keymap.set('v', 'J', '<Nop>', { noremap = true, silent = true })
+vim.keymap.set('V', 'J', '<Nop>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true })
 
 vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true })
