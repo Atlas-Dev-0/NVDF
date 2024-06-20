@@ -12,7 +12,7 @@ vim.g.have_nerd_font = true
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
+-- For more options, you can see `:help option-list`
 
 -- Make line numbers default
 vim.opt.number = true
@@ -62,6 +62,7 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
