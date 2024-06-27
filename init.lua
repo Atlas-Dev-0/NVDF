@@ -1,5 +1,24 @@
 -- Kenneth G. NEOVIM CONFIG FILE
 
+--MrG Keymaps
+vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'remap select all' })
+vim.keymap.set('n', 'J', '3j', { noremap = true, silent = true })
+vim.keymap.set('v', 'J', '3j', { noremap = true, silent = true })
+vim.keymap.set('x', 'J', '3j', { noremap = true, silent = true })
+vim.keymap.set('n', 'K', '3k', { noremap = true, silent = true })
+vim.keymap.set('v', 'K', '3k', { noremap = true, silent = true })
+vim.keymap.set('x', 'K', '3k', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true })
+
+vim.keymap.set('n', ':W<CR>', ':w<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', ':Q<CR>', ':q<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', ':WQ<CR>', ':wq<CR>', { noremap = true, silent = true })
+
+vim.keymap.set('n', 'd', '"_d', { noremap = true })
+vim.keymap.set('v', 'd', '"_d', { noremap = true })
+vim.keymap.set('n', 'dd', '"_dd', { noremap = true })
+vim.keymap.set('n', 'D', '"_D', { noremap = true })
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -50,7 +69,7 @@ vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 200
+vim.opt.timeoutlen = 100
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -86,19 +105,6 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-
---MrG Keymaps
-vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'remap select all' })
-vim.keymap.set('n', 'J', 'g5J', { noremap = true, silent = true })
-vim.keymap.set('v', 'J', 'g5J', { noremap = true, silent = true })
-vim.keymap.set('x', 'J', 'g5J', { noremap = true, silent = true })
-vim.keymap.set('n', 'K', 'g5k', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true })
-
-vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true })
-vim.api.nvim_set_keymap('v', 'd', '"_d', { noremap = true })
-vim.api.nvim_set_keymap('n', 'dd', '"_dd', { noremap = true })
-vim.api.nvim_set_keymap('n', 'D', '"_D', { noremap = true })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
