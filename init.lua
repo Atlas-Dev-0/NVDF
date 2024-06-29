@@ -357,6 +357,14 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'preservim/nerdtree',
+    config = function()
+      vim.keymap.set('n', '<leader>[', ':NERDTree<CR>', { desc = 'toggle nerd tree' })
+      vim.keymap.set('n', '<leader>]', ':NERDTreeClose<CR>', { desc = 'close tree' })
+      vim.keymap.set('n', '<leader>[', ':NERDTreeFocus<CR>', { desc = 'focus nerd tree' })
+    end,
+  },
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -514,6 +522,19 @@ require('lazy').setup({
         --gopls = {},
         pyright = {},
         rust_analyzer = {},
+        jsonls = {
+          cmd = { 'node', './node_modules/vscode-languageserver', '--stdio' },
+          filetypes = { 'json' },
+        },
+        html = {
+          cmd = { 'node', './node_modules/vscode-languageserver', '--stdio' },
+          filetypes = { 'html' },
+        },
+        cssls = {
+          cmd = { 'node', './node_modules/vscode-languageserver', '--stdio' },
+          filetypes = { 'css', 'scss', 'less' },
+        },
+
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
