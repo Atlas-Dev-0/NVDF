@@ -751,6 +751,7 @@ require('lazy').setup({
       -- Set transparency settings
       vim.cmd [[
       highlight Normal guibg=NONE ctermbg=NONE
+      highlight NormalFloat guibg=NONE ctermbg=NONE
       highlight SignColumn guibg=NONE ctermbg=NONE
       highlight LineNr guibg=NONE ctermbg=NONE
       highlight NERDTreeDir guibg=NONE ctermbg=NONE
