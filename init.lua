@@ -4,6 +4,8 @@
 vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'remap select all' })
 vim.keymap.set('n', 'J', '3j', { noremap = true, silent = true })
 vim.keymap.set('v', 'J', '3j', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>[', ':NERDTreeToggle | wincmd _ | wincmd |<CR>', { desc = 'toggle nerd tree' })
+vim.keymap.set('n', '<leader>]', ':NERDTreeClose<CR>', { desc = 'close tree' })
 vim.keymap.set('x', 'J', '3j', { noremap = true, silent = true })
 vim.keymap.set('n', 'K', '3k', { noremap = true, silent = true })
 vim.keymap.set('v', 'K', '3k', { noremap = true, silent = true })
@@ -69,7 +71,7 @@ vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 100
+vim.opt.timeoutlen = 200
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -749,7 +751,6 @@ require('lazy').setup({
       -- Set transparency settings
       vim.cmd [[
       highlight Normal guibg=NONE ctermbg=NONE
-      highlight NormalFloat guibg=NONE ctermbg=NONE
       highlight SignColumn guibg=NONE ctermbg=NONE
       highlight LineNr guibg=NONE ctermbg=NONE
       highlight NERDTreeDir guibg=NONE ctermbg=NONE
@@ -758,8 +759,6 @@ require('lazy').setup({
       highlight NERDTreeClosable guibg=NONE ctermbg=NONE
       highlight NERDTreeFile guibg=NONE ctermbg=NONE
       highlight NERDTreeExecFile guibg=NONE ctermbg=NONE
-
-
     ]]
     end,
   },
