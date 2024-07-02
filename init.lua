@@ -27,6 +27,9 @@ vim.keymap.set('n', 'D', '"_D', { noremap = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Closes NERDTree when opening a file
+vim.g.NERDTreeQuitOnOpen = 1
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
