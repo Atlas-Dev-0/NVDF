@@ -726,10 +726,18 @@ require('lazy').setup({
       vim.cmd.hi 'Comment gui=none'
 
       -- Set transparency settings
-      vim.cmd [[
-        highlight Normal guibg=NONE ctermbg=NONE
-        highlight NonText guibg=NONE ctermbg=NONE
-      ]]
+    end,
+  },
+
+  {
+    'preservim/nerdtree',
+    config = function()
+      -- Closes NERDTree when opening a file
+      vim.g.NERDTreeQuitOnOpen = 1
+      -- NERDTree Toggles
+      vim.keymap.set('n', '<leader>[', ':NERDTree<CR>', { desc = 'toggle nerd tree' })
+      vim.keymap.set('n', '<leader>]', ':NERDTreeClose<CR>', { desc = 'close tree' })
+      vim.keymap.set('n', '<leader>[', ':NERDTreeFocus<CR>', { desc = 'focus nerd tree' })
     end,
   },
 
