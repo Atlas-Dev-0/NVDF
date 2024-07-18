@@ -811,6 +811,12 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+  -- json formatter
+  -- first do "npm install -g jjson"
+  {
+    'XadillaX/json-formatter.vim',
+  },
+
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
