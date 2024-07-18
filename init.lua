@@ -21,6 +21,11 @@ vim.keymap.set('v', 'd', '"_d', { noremap = true })
 vim.keymap.set('n', 'dd', '"_dd', { noremap = true })
 vim.keymap.set('n', 'D', '"_D', { noremap = true })
 
+vim.keymap.set('n', '<C-z>', '', { noremap = true })
+vim.keymap.set('v', '<C-z>', '', { noremap = true })
+vim.keymap.set('x', '<C-z>', '', { noremap = true })
+vim.keymap.set('i', '<C-z>', '', { noremap = true })
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
