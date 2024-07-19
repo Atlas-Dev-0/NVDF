@@ -1,5 +1,11 @@
 -- Kenneth G. NEOVIM CONFIG FILE
 
+-- Disable termination
+vim.keymap.set('n', '<C-z>', '', { noremap = true })
+vim.keymap.set('v', '<C-z>', '', { noremap = true })
+vim.keymap.set('x', '<C-z>', '', { noremap = true })
+vim.keymap.set('i', '<C-z>', '', { noremap = true })
+
 --MrG Keymaps
 vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'remap select all' })
 vim.keymap.set('n', 'J', '3j', { noremap = true, silent = true })
@@ -20,11 +26,6 @@ vim.keymap.set('n', 'd', '"_d', { noremap = true })
 vim.keymap.set('v', 'd', '"_d', { noremap = true })
 vim.keymap.set('n', 'dd', '"_dd', { noremap = true })
 vim.keymap.set('n', 'D', '"_D', { noremap = true })
-
-vim.keymap.set('n', '<C-z>', '', { noremap = true })
-vim.keymap.set('v', '<C-z>', '', { noremap = true })
-vim.keymap.set('x', '<C-z>', '', { noremap = true })
-vim.keymap.set('i', '<C-z>', '', { noremap = true })
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
