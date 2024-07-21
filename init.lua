@@ -21,6 +21,8 @@ vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true })
 vim.keymap.set('n', ':W<CR>', ':w<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', ':Q<CR>', ':q<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', ':WQ<CR>', ':wq<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', ':Wq<CR>', ':wq<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', ':wQ<CR>', ':wq<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', 'd', '"_d', { noremap = true })
 vim.keymap.set('v', 'd', '"_d', { noremap = true })
