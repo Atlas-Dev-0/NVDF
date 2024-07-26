@@ -8,14 +8,18 @@ vim.keymap.set('i', '<C-z>', '', { noremap = true })
 
 --MrG Keymaps
 vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'remap select all' })
-vim.keymap.set('n', 'J', '3j', { noremap = true, silent = true })
-vim.keymap.set('v', 'J', '3j', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>[', ':NERDTreeToggle | wincmd _ | wincmd |<CR>', { desc = 'toggle nerd tree' })
 vim.keymap.set('n', '<leader>]', ':NERDTreeClose<CR>', { desc = 'close tree' })
+
+-- Fast Line Scroll.
+vim.keymap.set('n', 'J', '3j', { noremap = true, silent = true })
+vim.keymap.set('v', 'J', '3j', { noremap = true, silent = true })
 vim.keymap.set('x', 'J', '3j', { noremap = true, silent = true })
 vim.keymap.set('n', 'K', '3k', { noremap = true, silent = true })
 vim.keymap.set('v', 'K', '3k', { noremap = true, silent = true })
 vim.keymap.set('x', 'K', '3k', { noremap = true, silent = true })
+
+-- Windows Save
 vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true })
 
 vim.keymap.set('n', ':W<CR>', ':w<CR>', { noremap = true, silent = true })
@@ -24,10 +28,19 @@ vim.keymap.set('n', ':WQ<CR>', ':wq<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', ':Wq<CR>', ':wq<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', ':wQ<CR>', ':wq<CR>', { noremap = true, silent = true })
 
+-- True Delete
 vim.keymap.set('n', 'd', '"_d', { noremap = true })
 vim.keymap.set('v', 'd', '"_d', { noremap = true })
 vim.keymap.set('n', 'dd', '"_dd', { noremap = true })
 vim.keymap.set('n', 'D', '"_D', { noremap = true })
+
+-- Soft Wrap Line Scroll
+vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
+vim.keymap.set('v', 'j', 'gj', { noremap = true, silent = true })
+vim.keymap.set('x', 'j', 'gj', { noremap = true, silent = true })
+vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
+vim.keymap.set('v', 'k', 'gk', { noremap = true, silent = true })
+vim.keymap.set('x', 'k', 'gk', { noremap = true, silent = true })
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
