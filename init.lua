@@ -1,6 +1,6 @@
 -- Kenneth G. NEOVIM CONFIG FILE
-
 -- Disable termination
+
 vim.keymap.set('n', '<C-z>', '', { noremap = true })
 vim.keymap.set('v', '<C-z>', '', { noremap = true })
 vim.keymap.set('x', '<C-z>', '', { noremap = true })
@@ -41,6 +41,10 @@ vim.keymap.set('x', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
 vim.keymap.set('v', 'k', 'gk', { noremap = true, silent = true })
 vim.keymap.set('x', 'k', 'gk', { noremap = true, silent = true })
+
+-- Color picker Keymap
+vim.keymap.set('n', '<C-c>', '<cmd>PickColor<cr>')
+vim.keymap.set('i', '<C-c>', '<cmd>PickColorInsert<cr>')
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -149,10 +153,8 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<C-h>', '<C-w>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w>', { desc = 'Move focus to the right window' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -201,8 +203,31 @@ require('lazy').setup({
   --  This is equivalent to:
   --    require('Comment').setup({})
   -- "gc" to comment visual regions/lines
+  --
   { 'numToStr/Comment.nvim', opts = {} },
 
+  -- Color Picker
+  {
+    'ziontee113/color-picker.nvim',
+    config = function()
+      require('color-picker').setup { -- for changing icons & mappings
+        -- ['icons'] = { 'ﱢ', '' },
+        -- ['icons'] = { 'ﮊ', '' },
+        -- ['icons'] = { '', 'ﰕ' },
+        -- ['icons'] = { '', '' },
+        -- ['icons'] = { '', '' },
+        -- ['icons'] = { 'ﱢ', '' },
+        ['border'] = 'rounded', -- none | single | double | rounded | solid | shadow
+        ['keymap'] = { -- mapping example:
+          ['U'] = '<Plug>ColorPickerSlider5Decrease',
+          ['O'] = '<Plug>ColorPickerSlider5Increase',
+        },
+        ['background_highlight_group'] = 'Normal', -- default
+        ['border_highlight_group'] = 'FloatBorder', -- default
+        ['text_highlight_group'] = 'Normal', --default
+      }
+    end,
+  },
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
   --    require('gitsigns').setup({ ... })
