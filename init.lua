@@ -1,23 +1,50 @@
 -- Kenneth G. NEOVIM CONFIG FILE
+-- Disable termination
+
+vim.keymap.set('n', '<C-z>', '', { noremap = true })
+vim.keymap.set('v', '<C-z>', '', { noremap = true })
+vim.keymap.set('x', '<C-z>', '', { noremap = true })
+vim.keymap.set('i', '<C-z>', '', { noremap = true })
 
 --MrG Keymaps
 vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'remap select all' })
+vim.keymap.set('n', '<leader>[', ':NERDTreeToggle | wincmd _ | wincmd |<CR>', { desc = 'toggle nerd tree' })
+vim.keymap.set('n', '<leader>]', ':NERDTreeClose<CR>', { desc = 'close tree' })
+
+-- Fast Line Scroll.
 vim.keymap.set('n', 'J', '3j', { noremap = true, silent = true })
 vim.keymap.set('v', 'J', '3j', { noremap = true, silent = true })
 vim.keymap.set('x', 'J', '3j', { noremap = true, silent = true })
 vim.keymap.set('n', 'K', '3k', { noremap = true, silent = true })
 vim.keymap.set('v', 'K', '3k', { noremap = true, silent = true })
 vim.keymap.set('x', 'K', '3k', { noremap = true, silent = true })
+
+-- Windows Save
 vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true })
 
 vim.keymap.set('n', ':W<CR>', ':w<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', ':Q<CR>', ':q<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', ':WQ<CR>', ':wq<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', ':Wq<CR>', ':wq<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', ':wQ<CR>', ':wq<CR>', { noremap = true, silent = true })
 
+-- True Delete
 vim.keymap.set('n', 'd', '"_d', { noremap = true })
 vim.keymap.set('v', 'd', '"_d', { noremap = true })
 vim.keymap.set('n', 'dd', '"_dd', { noremap = true })
 vim.keymap.set('n', 'D', '"_D', { noremap = true })
+
+-- Soft Wrap Line Scroll
+vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
+vim.keymap.set('v', 'j', 'gj', { noremap = true, silent = true })
+vim.keymap.set('x', 'j', 'gj', { noremap = true, silent = true })
+vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
+vim.keymap.set('v', 'k', 'gk', { noremap = true, silent = true })
+vim.keymap.set('x', 'k', 'gk', { noremap = true, silent = true })
+
+-- Color picker Keymap
+vim.keymap.set('n', '<C-c>', '<cmd>PickColor<cr>')
+vim.keymap.set('i', '<C-c>', '<cmd>PickColorInsert<cr>')
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -69,7 +96,7 @@ vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 100
+vim.opt.timeoutlen = 200
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -126,10 +153,8 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<C-h>', '<C-w>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w>', { desc = 'Move focus to the right window' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -178,8 +203,39 @@ require('lazy').setup({
   --  This is equivalent to:
   --    require('Comment').setup({})
   -- "gc" to comment visual regions/lines
+  --
   { 'numToStr/Comment.nvim', opts = {} },
 
+  --Auto Pair
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true,
+    -- use opts = {} for passing setup options
+    -- this is equalent to setup({}) function
+  },
+  -- Color Picker
+  {
+    'ziontee113/color-picker.nvim',
+    config = function()
+      require('color-picker').setup { -- for changing icons & mappings
+        -- ['icons'] = { 'ﱢ', '' },
+        -- ['icons'] = { 'ﮊ', '' },
+        -- ['icons'] = { '', 'ﰕ' },
+        -- ['icons'] = { '', '' },
+        -- ['icons'] = { '', '' },
+        -- ['icons'] = { 'ﱢ', '' },
+        ['border'] = 'rounded', -- none | single | double | rounded | solid | shadow
+        ['keymap'] = { -- mapping example:
+          ['U'] = '<Plug>ColorPickerSlider5Decrease',
+          ['O'] = '<Plug>ColorPickerSlider5Increase',
+        },
+        ['background_highlight_group'] = 'Normal', -- default
+        ['border_highlight_group'] = 'FloatBorder', -- default
+        ['text_highlight_group'] = 'Normal', --default
+      }
+    end,
+  },
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
   --    require('gitsigns').setup({ ... })
@@ -357,6 +413,16 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'preservim/nerdtree',
+    config = function()
+      -- Closes NERDTree when opening a file
+      vim.g.NERDTreeQuitOnOpen = 1
+      vim.keymap.set('n', '<leader>[', ':NERDTree<CR>', { desc = 'toggle nerd tree' })
+      vim.keymap.set('n', '<leader>]', ':NERDTreeClose<CR>', { desc = 'close tree' })
+      vim.keymap.set('n', '<leader>[', ':NERDTreeFocus<CR>', { desc = 'focus nerd tree' })
+    end,
+  },
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -510,32 +576,45 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         --gopls = {},
         pyright = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
+        jsonls = {
+          cmd = { 'node', './node_modules/vscode-languageserver', '--stdio' },
+          filetypes = { 'json' },
+        },
+        html = {
+          cmd = { 'node', './node_modules/vscode-languageserver', '--stdio' },
+          filetypes = { 'html' },
+        },
+        cssls = {
+          cmd = { 'node', './node_modules/vscode-languageserver', '--stdio' },
+          filetypes = { 'css', 'scss', 'less' },
+        },
+
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {},
+        -- tsserver = {},
 
-        -- lua_ls = {
-        --   -- cmd = {...},
-        --   -- filetypes = { ...},
-        --   -- capabilities = {},
-        --   settings = {
-        --     Lua = {
-        --       completion = {
-        --         callSnippet = 'Replace',
-        --       },
-        --       -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-        --       -- diagnostics = { disable = { 'missing-fields' } },
-        --     },
-        --   },
-        -- },
+        lua_ls = {
+          -- cmd = {...},
+          -- filetypes = { ...},
+          -- capabilities = {},
+          settings = {
+            Lua = {
+              completion = {
+                callSnippet = 'Replace',
+              },
+              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+              -- diagnostics = { disable = { 'missing-fields' } },
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -550,7 +629,8 @@ require('lazy').setup({
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        -- 'stylua', -- Used to format Lua code
+        'vue-language-server',
+        'stylua', -- Used to format Lua code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -729,18 +809,6 @@ require('lazy').setup({
     end,
   },
 
-  {
-    'preservim/nerdtree',
-    config = function()
-      -- Closes NERDTree when opening a file
-      vim.g.NERDTreeQuitOnOpen = 1
-      -- NERDTree Toggles
-      vim.keymap.set('n', '<leader>[', ':NERDTree<CR>', { desc = 'toggle nerd tree' })
-      vim.keymap.set('n', '<leader>]', ':NERDTreeClose<CR>', { desc = 'close tree' })
-      vim.keymap.set('n', '<leader>[', ':NERDTreeFocus<CR>', { desc = 'focus nerd tree' })
-    end,
-  },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -781,11 +849,17 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+  -- json formatter
+  -- first do "npm install -g jjson"
+  {
+    'XadillaX/json-formatter.vim',
+  },
+
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'cpp', 'javascript', 'css' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
