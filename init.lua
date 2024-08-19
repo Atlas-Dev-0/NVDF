@@ -36,10 +36,10 @@ vim.keymap.set('n', 'D', '"_D', { noremap = true })
 
 -- Soft Wrap Line Scroll
 vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
-vim.keymap.set('v', 'j', 'gj', { noremap = true, silent = true })
-vim.keymap.set('x', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
+vim.keymap.set('v', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('v', 'k', 'gk', { noremap = true, silent = true })
+vim.keymap.set('x', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('x', 'k', 'gk', { noremap = true, silent = true })
 
 -- Color picker Keymap
