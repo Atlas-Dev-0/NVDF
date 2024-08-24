@@ -675,6 +675,7 @@ require('lazy').setup({
         }
       end,
       formatters_by_ft = {
+        html = { 'prettier' },
         php = { { 'phpcbf', 'prettier' } },
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
