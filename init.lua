@@ -215,6 +215,7 @@ require('lazy').setup({
     -- this is equalent to setup({}) function
   },
   --venv selector
+  --HACK: TO BE FIXED DUE TO SPAWN ERROR
   {
     'linux-cultist/venv-selector.nvim',
     dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
